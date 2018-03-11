@@ -1,3 +1,6 @@
 {
-  "presets": ["react-native"]
+  "presets": ["react-native"],
+  "plugins": [
+    ["import", { "libraryName": "antd-mobile" }] // The difference with the Web platform is that you do not need to set the style
+  ]
 }
