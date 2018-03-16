@@ -121,8 +121,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     shadowOffset: { x: 0, y: 2 },
-    shadowRadius: 10,
-    shadowColor: '#BABABA',
+    shadowRadius: 3,
+    shadowColor: '#B9B9B9',
     shadowOpacity: 0.5,
   },
   text: {

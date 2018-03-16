@@ -32,14 +32,22 @@ import {
 // create get need attend worker saga
 function* getEvents(action) {
   try {
-    const { active, mode, next } = action.payload;
+    const { active, mode, next, headline } = action.payload;
     // a object for judge whether 
     let events = [];
-    if (active) {
+    if (active || headline) {
       if (mode === 'footer' && !!next) {
-        events = yield call( request.get, next, { active: true });
+        if (active) {
+          events = yield call( request.get, next, { active: true });
+        } else {
+          events = yield call( request.get, next, { headline: true });
+        }
       } else if (mode === 'header') {
-        events = yield call( request.get, base + homeApi().getEvents, { active: true } );
+        if (active) {
+          events = yield call( request.get, base + homeApi().getEvents, { active: true } );
+        } else {
+          events = yield call( request.get, base + homeApi().getEvents, { headline: true } );
+        }
       } else {
         return;
       }
@@ -57,7 +65,7 @@ function* getEvents(action) {
     // { active: true } represent the request events is the attend events
     
     // if get need attend  successfully, dispatch action and return needAttendEvents to redux-store
-    yield put({ type: GET_EVENTS_SUCCESS, payload: { events, active, mode }});
+    yield put({ type: GET_EVENTS_SUCCESS, payload: { events, active, mode, headline }});
   } catch(e) {
     // if get need attend error, dispatch error action & error message for better `debug`
     yield put({ type: GET_EVENTS_ERROR, errorMsg: e });

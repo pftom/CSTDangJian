@@ -71,7 +71,6 @@ class ActivityItem extends Component {
     } = nextProps;
 
     const that = this;
-    console.log('nextProps', nextProps);
 
     if (isAttendingEvent) {
       loadingToast('签到中...', 3);
@@ -259,10 +258,12 @@ class ActivityBox extends Component {
               onRefresh={() => this._onRefresh('header')}
             />
           }
+          contentContainerStyle={styles.listView}
           enableEmptySections={true}
           renderFooter={() => this._renderFooter()}
           onEndReached={() => this._onRefresh('footer')}
           dataSource={dataSource}
+          removeClippedSubviews={false}
           onEndReachedThreshold={10}
           showsVerticalScrollIndicator={false}
           renderRow={(rowData) => {
@@ -285,12 +286,12 @@ class ActivityBox extends Component {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     alignItems: 'center',
     paddingTop: px2dp(20),
   },
   listView: {
     alignItems: 'center',
-    flex: 1,
   },
   containerItem: {
     paddingBottom: 20,
