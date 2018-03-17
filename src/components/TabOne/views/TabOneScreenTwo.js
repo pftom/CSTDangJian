@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   },
   containerBox: {
     width: width,
-    height: height - px2dp(90),
+    height: height - px2dp(50),
     paddingTop: px2dp(20),
   },
   pic: {

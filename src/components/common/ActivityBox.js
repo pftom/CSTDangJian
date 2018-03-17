@@ -38,6 +38,7 @@ import {
   GET_SINGLE_NEWS,
   GET_ACTIVE_EVENTS,
   ATTEND,
+  INITIAL_SIGN_STATE,
 } from '../../constants/';
 
 // import toast function
@@ -71,9 +72,10 @@ class ActivityItem extends Component {
     } = nextProps;
 
     const that = this;
+    const { dispatch } = that.props;
 
     if (isAttendingEvent) {
-      loadingToast('签到中...', 3);
+      loadingToast('签到中...', 3, INITIAL_SIGN_STATE, dispatch);
     }
 
     if (attendEventSuccess) {
@@ -81,7 +83,7 @@ class ActivityItem extends Component {
         showModal: false,
         status: true,
       });
-      successToast('签到成功!', 2);
+      successToast('签到成功!', 2, INITIAL_SIGN_STATE, dispatch);
     }
 
     if (attendEventError) {
@@ -89,7 +91,7 @@ class ActivityItem extends Component {
         showModal: false,
         status: false,
       });
-      failToast('签到失败，请检查网络连接!', 2);
+      failToast('签到失败，请检查网络连接!', 2, INITIAL_SIGN_STATE, dispatch);
     }
   }
 

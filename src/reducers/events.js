@@ -16,6 +16,8 @@ import {
   ATTEND,
   ATTEND_SUCCESS,
   ATTEND_ERROR,
+
+  INITIAL_SIGN_STATE,
 } from '../constants/';
 
 // construct initial need attend events state
@@ -191,6 +193,15 @@ const attendEvent = (state = initialAttendEventState, action) => {
         ...state,
         isAttendingEvent: false,
         attendEventError: true,
+      };
+    }
+
+    case ATTEND_ERROR: {
+      return {
+        ...state,
+        isAttendingEvent: false,
+        attendEventSuccess: false,
+        attendEventError: false,
       };
     }
 

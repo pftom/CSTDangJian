@@ -9,20 +9,25 @@ function showToastNoMask(msg, time) {
   Toast.info(msg, time, null, false);
 }
 
-function successToast(msg, time) {
-  Toast.success(msg, time);
+function successToast(msg, time, action, dispatch) {
+  Toast.success(msg, time, () => {
+    dispatch({ type: action });
+  });
 }
 
-function failToast(msg, time) {
-  Toast.fail(msg, time);
+function failToast(msg, time, action, dispatch) {
+  Toast.fail(msg, time, () => {
+    dispatch({ type: action });
+  });
 }
 
 function offline(msg, time) {
   Toast.offline(msg, time);
 }
 
-function loadingToast(msg, time) {
+function loadingToast(msg, time, action, dispatch) {
   Toast.loading(msg, time, () => {
+    dispatch({ type: action });
     console.log('Load complete !!!');
   });
 }

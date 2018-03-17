@@ -83,7 +83,7 @@ export default class Feedback extends Component {
               title="哈哈哈"
               count={120}
               rows={7}
-              style={{ marginLeft: -10, paddingLeft: 10, paddingRight: 10, marginTop: 10 }}
+              style={{ paddingLeft: 10, paddingRight: 10, marginTop: 10 }}
               placeholder="您发现了问题？或者您有更好的改进意见？都希望您能写下宝贵的反馈，帮助我们持续改进~"
               placeholderTextColor="#CCC"
               multiline={true}
