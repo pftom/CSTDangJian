@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image, Alert, Text, StyleSheet, Platform, View, Dimensions, TouchableOpacity, TouchableHighlight } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import { ifIphoneX } from 'react-native-iphone-x-helper';
 import px2dp from '../../util/index';
 
 const width = Dimensions.get('window').width;
@@ -44,7 +45,11 @@ const Header = (props) => {
 
 const styles = StyleSheet.create({
   linearGradient: {
-    height: 90,
+    ...ifIphoneX({
+      height: 110,
+    }, {
+      height: 90,
+    }),
     flexDirection: 'row',
     width: width,
     ...Platform.select({
@@ -67,7 +72,11 @@ const styles = StyleSheet.create({
     ...Platform.select({
       ios: {
         left: px2dp(145),
-        top: 39,
+        ...ifIphoneX({
+          top: 55,
+        }, {
+          top: 39,
+        })
       },
       android: {
         left: px2dp(width / 2 - 63),
@@ -82,7 +91,11 @@ const styles = StyleSheet.create({
     ...Platform.select({
       ios: {
         left: px2dp(90),
-        top: 39,
+        ...ifIphoneX({
+          top: 57,
+        }, {
+          top: 39,
+        })
       },
       android: {
         left: px2dp(width / 2 - 63),
@@ -107,6 +120,9 @@ const styles = StyleSheet.create({
   logoLeftBox: {
     height: px2dp(90),
     width: px2dp(50),
+    ...ifIphoneX({
+      top: 20,
+    })
   },  
   logoText: {
     fontFamily: 'PingFangSC-Light',

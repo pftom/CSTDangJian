@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet, ScrollView, } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import { ifIphoneX } from 'react-native-iphone-x-helper';
 
 import Header from './Header';
 import px2dp from '../../util/index';
@@ -71,7 +72,11 @@ MessageBox.navigationOptions = ({ navigation }) => ({
 const styles = StyleSheet.create({
   outerBox: {
     flexDirection: 'column',
-    marginTop: px2dp(38),
+    ...ifIphoneX({
+      marginTop: px2dp(58),
+    }, {
+      marginTop: px2dp(38),
+    }),
     marginBottom: 20,
   },
   scrollView: {

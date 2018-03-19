@@ -24,7 +24,7 @@ class FeedbackContainer extends PureComponent {
 
 FeedbackContainer.navigationOptions = ({ navigation }) => ({
   headerTitle: (
-    <View>
+    <View style={{ height: 90 }}>
       <Header 
         headerText="意见反馈"
         logoLeft={require('../components/TabOne/img/back.png')}

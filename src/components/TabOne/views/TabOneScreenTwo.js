@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import HTMLView from 'react-native-htmlview';
+import { ifIphoneX } from 'react-native-iphone-x-helper';
 
 import Header from '../../common/Header';
 import px2dp from '../../../util/index';
@@ -66,7 +67,11 @@ const styles = StyleSheet.create({
   containerBox: {
     width: width,
     height: height - px2dp(50),
-    paddingTop: px2dp(20),
+    ...ifIphoneX({
+      paddingTop: px2dp(30),
+    }, {
+      paddingTop: px2dp(20),
+    }),
   },
   pic: {
     width: px2dp(296),

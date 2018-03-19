@@ -62,7 +62,7 @@ class TabTwoScreenOneContainer extends PureComponent {
 // define the header for this component
 TabTwoScreenOneContainer.navigationOptions = ({ navigation }) => ({
   headerTitle: (
-    <View>
+    <View style={{ height: 90 }}>
       <Header 
         headerText="在线学习"
         navigation={navigation}

@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { connect } from 'react-redux';
+import { ifIphoneX } from 'react-native-iphone-x-helper';
 
 import RefreshListView from './RefreshListView';
 import Header from './Header';
@@ -290,7 +291,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    paddingTop: px2dp(20),
+    ...ifIphoneX({
+      paddingTop: px2dp(50),
+    }, {
+      paddingTop: px2dp(20),
+    }),
   },
   listView: {
     alignItems: 'center',

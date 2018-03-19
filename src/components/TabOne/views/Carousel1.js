@@ -12,6 +12,7 @@ import {
 import Swiper from './Swiper';
 import px2dp from '../../../util/index';
 import LinearGradient from 'react-native-linear-gradient';
+import { ifIphoneX } from 'react-native-iphone-x-helper';
 
 import {
   GET_SINGLE_EVENT,
@@ -49,7 +50,13 @@ class Carousel1 extends Component {
           borderColor: '#FFF',
           marginBottom: px2dp(3),}} />}
         dotStyle={{ backgroundColor: '#FFF'}}
-        paginationStyle={{ top: px2dp(-320) }}
+        paginationStyle={{ 
+          ...ifIphoneX({
+            top: px2dp(-425),
+          }, {
+            top: px2dp(-320),
+          }),
+        }}
         style={styles.container}>
         {
           headline.map((item, key) => (
@@ -75,6 +82,11 @@ class Carousel1 extends Component {
 const styles = StyleSheet.create({
   slide: {
     width: width,
+    ...ifIphoneX({
+      marginTop: px2dp(20),
+    }, {
+      
+    }),
   },
   img: {
     width: width,
@@ -98,6 +110,7 @@ const styles = StyleSheet.create({
   linearGradient: {
     width: width,
     height: px2dp(184),
+    
     position: 'absolute',
   }
 });

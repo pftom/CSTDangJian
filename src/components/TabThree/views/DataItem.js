@@ -6,6 +6,7 @@ import SelectPhoto from './SelectPhoto';
 import px2dp from '../../../util/';
 // import { logout } from '../../../actions/user';
 const width = Dimensions.get('window').width;
+import { ifIphoneX } from 'react-native-iphone-x-helper';
 
 const AUTHORITY = [8, 9, 10, 11, 13];
 const NAVIGATION = {
@@ -156,7 +157,11 @@ const styles = StyleSheet.create({
     fontSize: px2dp(16),
     color: '#8F8E94',
     letterSpacing: -0.41,
-    paddingRight: 20,
+    ...ifIphoneX({
+      paddingRight: 45,
+    }, {
+      paddingRight: px2dp(20),
+    }),
     width: 314,
     textAlign: 'right'
   },
@@ -164,10 +169,18 @@ const styles = StyleSheet.create({
     left: px2dp(-11),
   },
   arrow1: {
-    left: px2dp(-20),
+    ...ifIphoneX({
+      left: px2dp(-45),
+    }, {
+      left: px2dp(-20),
+    }),
   },
   arrow2: {
-    left: px2dp(-65),
+    ...ifIphoneX({
+      left: px2dp(-85),
+    }, {
+      left: px2dp(-65),
+    }),
     marginTop: 2.5
   }
 })

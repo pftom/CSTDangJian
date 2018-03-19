@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View,  StyleSheet,  ScrollView } from 'react-native';
 import SinglePicker from 'mkp-react-native-picker';
+import { ifIphoneX } from 'react-native-iphone-x-helper';
 
 // import antd-mobile component for better development
 import Header from '../../common/Header';
@@ -116,7 +117,7 @@ class PersonData extends Component {
 
 PersonData.navigationOptions = ({ navigation }) => ({
   headerTitle: (
-    <View>
+    <View style={{ height: 90 }}>
       <Header 
         logoLeft={require('../../TabOne/img/back.png')}
         headerText="个人档案"
@@ -131,7 +132,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f5f6f7',
-    paddingTop: px2dp(10),
+    ...ifIphoneX({
+      marginTop: px2dp(30),
+    }, {
+      paddingTop: px2dp(10),
+    }),
   },
   itemContainer: {
     shadowOffset: { x: 0, y: 5 },

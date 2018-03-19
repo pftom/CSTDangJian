@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import Header from '../../common/Header';
 import DataItem from './DataItem';
+import { ifIphoneX } from 'react-native-iphone-x-helper';
 
 import px2dp from '../../../util/';
 
@@ -70,7 +71,7 @@ class Setting extends Component {
 
 Setting.navigationOptions = ({ navigation }) => ({
   headerTitle: (
-    <View>
+    <View style={{ height: 90 }}>
       <Header
         logoLeft={require('../../TabOne/img/back.png')} 
         headerText="设    置"
@@ -85,7 +86,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f5f6f7',
-    paddingTop: px2dp(20),
+    ...ifIphoneX({
+      paddingTop: px2dp(40),
+    }, {
+      paddingTop: px2dp(20),
+    }),
   },
   itemContainer: {
     shadowOffset: { x: 0, y: 5 },

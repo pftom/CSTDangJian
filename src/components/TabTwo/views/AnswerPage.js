@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, TouchableOpacity, ScrollView, RefreshControl ,L
 import LinearGradient from 'react-native-linear-gradient';
 import { RadioButtons } from 'react-native-radio-buttons';
 import CheckBox from 'react-native-checkbox';
+import { ifIphoneX } from 'react-native-iphone-x-helper';
 
 // the compatability for all device about px
 import px2dp from '../../../util/';
@@ -204,7 +205,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFF',
     alignItems: 'center',
-    paddingTop: px2dp(40),
+    ...ifIphoneX({
+      paddingTop: px2dp(60),
+    }, {
+      paddingTop: px2dp(40),
+    }),
   },
   innerContainer: {
     width: px2dp(305),

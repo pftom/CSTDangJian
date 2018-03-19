@@ -3,6 +3,7 @@ import { View, Text, Image, TouchableOpacity, TextInput, ScrollView , Dimensions
   Keyboard, 
   TouchableWithoutFeedback,
 } from 'react-native';
+import { ifIphoneX } from 'react-native-iphone-x-helper';
 
 import { List, InputItem, TextareaItem, Button, WhiteSpace, WingBlank, Modal, Toast } from 'antd-mobile';
 
@@ -145,7 +146,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F5F6F7',
-    paddingTop: px2dp(30),
+    ...ifIphoneX({
+      paddingTop: px2dp(50),
+    }, {
+      paddingTop: px2dp(30),
+    }),
   },
   feedBtn: {
     borderWidth: 0,

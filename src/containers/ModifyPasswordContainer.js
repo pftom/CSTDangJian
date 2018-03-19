@@ -24,7 +24,7 @@ class ModifyPasswordContainer extends PureComponent {
 
 ModifyPasswordContainer.navigationOptions = ({ navigation }) => ({
   headerTitle: (
-    <View>
+    <View style={{ height: 90 }}>
       <Header 
         headerText="修改密码"
         logoLeft={require('../components/TabOne/img/back.png')}

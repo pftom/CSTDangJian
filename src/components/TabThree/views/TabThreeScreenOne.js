@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import LinearGradient from 'react-native-linear-gradient';
+import { ifIphoneX } from 'react-native-iphone-x-helper';
 
 import { Toast } from 'antd-mobile';
 
@@ -139,7 +140,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'flex-end',
     backgroundColor: '#FFF',
-    paddingTop: px2dp(10),
+    ...ifIphoneX({
+      paddingTop: px2dp(50),
+    }, {
+      paddingTop: px2dp(10),
+    }),
   },
   upSide: {
     flexDirection: 'row',
@@ -173,7 +178,12 @@ const styles = StyleSheet.create({
   gradient: {
     width: 312,
     height: 1,
-    marginTop: 29
+    ...ifIphoneX({
+      marginTop: 50,
+      marginBottom: 20,
+    }, {
+      marginTop: px2dp(29),
+    }),
   },
   gradientBox: {
     flexDirection: 'row',

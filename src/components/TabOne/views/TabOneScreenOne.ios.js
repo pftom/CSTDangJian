@@ -15,6 +15,7 @@ import {
 import ScrollViewTabView from './ScrollViewTabView';
 import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
 import { connect } from 'react-redux';
+import { ifIphoneX } from 'react-native-iphone-x-helper';
 
 import Carousel1 from './Carousel1';
 import MidTitle from './MidTitle';
@@ -261,13 +262,23 @@ class TabOneScreenOne extends PureComponent {
     return (
       <View style={styles.container}>
           <View style={styles.listBox}>
-          <View style={{ height: px2dp(184), width: width,}}><Carousel1 headline={headline} navigation={navigation} /></View>
-            <ScrollViewTabView
+          <View style={{ 
+              height: px2dp(184), 
+              width: width,
+            }}>
+            <Carousel1 headline={headline} navigation={navigation} />
+          </View>
+          <ScrollViewTabView
               ref={(listView) => this.listView = listView}
               isFetching={isFetching}
               dispatch={dispatch}
               navigation={navigation}
               headline={headline}
+              style={{ ...ifIphoneX({
+                marginTop: px2dp(20),
+              }, {
+                
+              }),}}
               getCurrentPage={this.getCurrentPage.bind(this)}
               imgOpacity={this.state.imgOpacity}
               renderTabBar={() => <DefaultTabBar  />}

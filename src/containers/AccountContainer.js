@@ -41,7 +41,7 @@ class AccountContainer extends PureComponent {
 
 AccountContainer.navigationOptions = ({ navigation }) => ({
   headerTitle: (
-    <View>
+    <View style={{ height: 90 }}>
       <Header 
         headerText="我的账号"
         navigation={navigation}

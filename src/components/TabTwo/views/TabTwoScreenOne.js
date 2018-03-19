@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, ScrollView, RefreshControl ,ListView, Picker, Image, TouchableWithoutFeedback, Dimensions } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { PickerView, Button } from 'antd-mobile';
+import { ifIphoneX } from 'react-native-iphone-x-helper';
 import px2dp from '../../../util/';
 
 // import Custom Page
@@ -101,7 +102,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFF',
-    marginTop: px2dp(20),
+    ...ifIphoneX({
+      marginTop: px2dp(40),
+    }, {
+      marginTop: px2dp(20),
+    }),
   },
 
   hintBox: {

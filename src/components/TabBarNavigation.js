@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
 import { TabNavigator, TabBarBottom, StackNavigator } from 'react-navigation';
+import { ifIphoneX } from 'react-native-iphone-x-helper';
 
 import { 
     TabOneScreenOneContainer,
@@ -98,9 +99,11 @@ const tabNavigatorConfig = {
         activeTintColor: '#D0011B',
         inactiveTintColor: 'black',
         style: {
-            height: 59.5,
-            borderColor: '#E0E0E0',
-            borderWidth: 0.5,
+            ...ifIphoneX({
+              height: 79.5,
+            }, {
+              height: 59.5,
+            }),
             backgroundColor: '#F5F6F7',
             paddingTop: 4.7,
             paddingLeft: 25.3,
@@ -109,7 +112,11 @@ const tabNavigatorConfig = {
         labelStyle: {
             fontFamily: 'PingFangSC-Light',
             fontSize: 12,
-            top: 0.3,
+            ...ifIphoneX({
+              bottom: 15,
+            }, {
+              bottom: -0.3
+            }),
         }
     },
     backBehavior: 'none',
@@ -125,14 +132,23 @@ const styles = StyleSheet.create({
     icon1: {
         width: 28,
         height: 30.71,
+        ...ifIphoneX({
+          bottom: 7,
+        }),
     },
     icon2: {
         width: 30,
         height: 29,
+        ...ifIphoneX({
+          bottom: 7,
+        }),
     },
     icon3: {
         width: 26,
         height: 30,
+        ...ifIphoneX({
+          bottom: 7,
+        }),
     }
 })
 
