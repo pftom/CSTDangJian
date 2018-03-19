@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image, Switch, Dimensions, TextInput, Touchable
 import { connect } from 'react-redux';
 
 import SelectPhoto from './SelectPhoto';
+import px2dp from '../../../util/';
 // import { logout } from '../../../actions/user';
 const width = Dimensions.get('window').width;
 
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
     height: 44,
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginLeft: 10,
+    marginLeft: px2dp(18),
     paddingRight: 10,
   },
   borderStyle: {
@@ -114,7 +115,8 @@ const styles = StyleSheet.create({
   title13: {
     fontFamily: 'PingFangSC-Medium',
     fontSize: 20,
-    color: '#FF3B30'
+    color: '#FF3B30',
+    marginRight: px2dp(25)
   },
   contentText: {
     fontFamily: 'PingFangSC-Light',
@@ -150,22 +152,22 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   text: {
-    fontFamily: 'PingFangSC-Light',
-    fontSize: 15,
+    fontFamily: 'PingFangSC-Regular',
+    fontSize: px2dp(16),
     color: '#8F8E94',
     letterSpacing: -0.41,
-    paddingRight: 27,
+    paddingRight: 20,
     width: 314,
     textAlign: 'right'
   },
   arrow: {
-    left: -11,
+    left: px2dp(-11),
   },
   arrow1: {
-    left: -40,
+    left: px2dp(-20),
   },
   arrow2: {
-    left: -65,
+    left: px2dp(-65),
     marginTop: 2.5
   }
 })

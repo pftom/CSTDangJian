@@ -21,8 +21,8 @@ import {
 const { width, height } = Dimensions.get('window');
 
 const cutTitle = (text) => {
-  if (String(text).length > 20) {
-    return text.slice(0, 20) + '...';
+  if (String(text).length > 17) {
+    return text.slice(0, 17) + '...';
   }
   return text;
 }
@@ -42,21 +42,21 @@ class Carousel1 extends Component {
         dot={<View 
         style={{
           backgroundColor:'transparent', 
-          width: 8, height: 8,
-          borderRadius: 4, marginLeft: 6, 
-          marginRight: 6, marginTop: 3, 
+          width: px2dp(8), height: px2dp(8),
+          borderRadius: px2dp(4), marginLeft: px2dp(6), 
+          marginRight: px2dp(6), marginTop: px2dp(1), 
           borderWidth: 1,
           borderColor: '#FFF',
-          marginBottom: 3,}} />}
+          marginBottom: px2dp(3),}} />}
         dotStyle={{ backgroundColor: '#FFF'}}
-        paginationStyle={{ top: -320 }}
+        paginationStyle={{ top: px2dp(-320) }}
         style={styles.container}>
         {
           headline.map((item, key) => (
             <TouchableWithoutFeedback key={key} onPress={() => this.props.navigation.navigate('TabOneScreenTwo', { title: '党建活动', data: { type: GET_SINGLE_EVENT, id: item.id }})}>  
               <View style={styles.slide}>
-                <Animated.Image source={{ uri: item.photo }} resizeMode={'stretch'} style={[ styles.img, { opacity: this.props.imgOpacity}]}>
-                </Animated.Image>
+                <Image source={{ uri: item.photo }} resizeMode={'stretch'} style={[ styles.img, { opacity: this.props.imgOpacity}]}>
+                </Image>
                 <LinearGradient
                   colors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 1)']} 
                   style={styles.linearGradient}
@@ -75,7 +75,6 @@ class Carousel1 extends Component {
 const styles = StyleSheet.create({
   slide: {
     width: width,
-    height: px2dp(184),
   },
   img: {
     width: width,
@@ -85,19 +84,21 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     alignItems: 'center',
     width: width,
-    top: 104,
+    paddingLeft: px2dp(30),
+    paddingRight: px2dp(30),
+    alignItems: 'center',
+    top: px2dp(118),
   },
   text: {
     backgroundColor: 'transparent',
     fontFamily: 'PingFangSC-Medium',
-    fontSize: 18,
+    fontSize: px2dp(18),
     color: '#FFFFFF',
   },
   linearGradient: {
     width: width,
-    height: 164,
+    height: px2dp(184),
     position: 'absolute',
-    marginTop: 20,
   }
 });
 

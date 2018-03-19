@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Text, Image, View, TouchableOpacity, StyleSheet, Alert, PixelRatio, Dimensions  } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 
+import px2dp from '../../../util/';
+
 const options = {
   title: null,
   cancelButtonTitle: '取消',
@@ -105,9 +107,9 @@ const styles = StyleSheet.create({
     marginTop: 9,
   },
   avatar1: {
-    borderRadius: 42.5,
-    width: 85,
-    height: 85,
+    borderRadius: px2dp(42.5),
+    width: px2dp(85),
+    height: px2dp(85),
   },
   avatar2: {
     borderRadius: 17.5,

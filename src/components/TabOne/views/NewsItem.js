@@ -3,7 +3,7 @@ import { Image, StyleSheet, View, Text, Dimensions } from 'react-native';
 import { handleTime } from '../../../util/index';
 
 // import base url for present images
-import { base } from '../../../util/';
+import px2dp, { base } from '../../../util/';
 
 const width = Dimensions.get('window').width;
 
@@ -12,8 +12,8 @@ const width = Dimensions.get('window').width;
 const NewsItem = (props) => {
   let title = props.title;
 
-  if (title.length >= 30) {
-    title = title.slice(0, 30);
+  if (title.length >= 20) {
+    title = title.slice(0, 20);
     title += '...';
   }
   
@@ -34,32 +34,32 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderBottomColor: '#D0021B',
     borderBottomWidth: 0.5,
-    paddingTop: 10,
-    paddingBottom: 10,
+    paddingTop: px2dp(10),
+    paddingBottom: px2dp(10),
     backgroundColor: '#fff',
   },
   pic: {
-    width: 124,
-    height: 78,
+    width: px2dp(124),
+    height: px2dp(78),
     borderRadius: 5,
-    left: 17,
+    left: px2dp(17),
   },
   textBox: {
-    width: 177,
-    height: 78,
-    marginLeft: 45,
+    width: px2dp(190),
+    height: px2dp(78),
+    marginLeft: px2dp(45),
     justifyContent: 'space-around',
   },
   title: {
     fontFamily: 'PingFangSC-Regular',
-    fontSize: 16,
+    fontSize: px2dp(16),
     color: 'rgba(0,0,0,0.80)',
   },
   time: {
     fontFamily: 'PingFangSC-Light',
-    fontSize: 14,
+    fontSize: px2dp(14),
     color: 'rgba(152,152,152,0.80)',
-    marginTop: 5
+    marginTop: px2dp(5)
   }
 })
 

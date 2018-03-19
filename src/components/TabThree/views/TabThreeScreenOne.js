@@ -144,10 +144,10 @@ const styles = StyleSheet.create({
   upSide: {
     flexDirection: 'row',
     marginRight: px2dp(41),
-    marginTop: 51,
+    marginTop: px2dp(51),
   },
   rightSide: {
-    marginTop: -15
+    marginTop: px2dp(-5),
   },
   name: {
     fontFamily: 'PingFangSC-Medium',
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
   gradientBox: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    marginTop: -25,
+    marginTop: px2dp(-15),
   },
   itemBox: {
     flexDirection: 'row',
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: px2dp(10),
   },
   profileBox: {
     flexDirection: 'row',
@@ -205,6 +205,7 @@ const styles = StyleSheet.create({
     borderRadius: 7,
   },
   profileText: {
+    marginLeft: px2dp(6),
     fontFamily: 'PingFangSC-Regular',
     fontSize: 16,
     color: '#D0011B',

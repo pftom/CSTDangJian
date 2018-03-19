@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFF',
-    paddingTop: px2dp(10),
+    paddingTop: px2dp(80),
   },
   hintBox: {
     width,

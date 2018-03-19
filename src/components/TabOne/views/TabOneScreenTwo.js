@@ -69,43 +69,43 @@ const styles = StyleSheet.create({
     paddingTop: px2dp(20),
   },
   pic: {
-    width: 296,
-    height: 166,
+    width: px2dp(296),
+    height: px2dp(166),
     borderRadius: 5,
   },
   head: {
-    fontSize: 20,
+    fontSize: px2dp(20),
   },
   picBox: {
     marginLeft: px2dp(60)
   },
   header: {
-    paddingBottom: 12,
+    paddingBottom: px2dp(12),
     borderBottomWidth: 0.5,
     borderBottomColor: '#C1C1C1',
-    marginBottom: 17,
+    marginBottom: px2dp(17),
   },
   title: {
     fontFamily: 'PingFangSC-Semibold',
-    fontSize: 20,
+    fontSize: px2dp(20),
     color: '#000000',
-    width: 283,
+    width: px2dp(283),
     alignItems: 'center',
-    marginTop: 21,
+    marginTop: px2dp(21),
   },
   time: {
     fontFamily: 'PingFangSC-Light',
-    fontSize: 14,
+    fontSize: px2dp(14),
     color: 'rgba(152,152,152,0.80)',
-    marginTop: 8,
+    marginTop: px2dp(8),
   },
   content: {
-    width: 306,
-    marginBottom: 50,
+    width: px2dp(306),
+    marginBottom: px2dp(50),
   },
   contentText: {
     fontFamily: 'PingFangSC-Light',
-    fontSize: 18,
+    fontSize: px2dp(18),
     color: '#000000',
   },
 });
@@ -114,16 +114,20 @@ const styles = StyleSheet.create({
 const htmlStyles = StyleSheet.create({
   strong: {
     fontFamily: 'PingFangSC-Light',
-    fontSize: 18,
+    fontSize: px2dp(18),
     color: '#000000',
   },
   p: {
     fontFamily: 'PingFangSC-Light',
-    fontSize: 15,
+    fontSize: px2dp(17),
+    lineHeight: px2dp(28),
     color: '#000000',
+    marginTop: 0,
+    marginBottom: 0,
+    paddingBottom: 0,
   },
   text: {
-    fontSize: 16,
+    fontSize: px2dp(16),
     fontFamily: 'PingFangSC-Light',
   }
 });

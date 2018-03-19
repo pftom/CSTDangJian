@@ -131,6 +131,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f5f6f7',
+    paddingTop: px2dp(10),
   },
   itemContainer: {
     shadowOffset: { x: 0, y: 5 },

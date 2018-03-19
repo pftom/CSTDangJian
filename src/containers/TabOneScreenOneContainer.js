@@ -57,7 +57,7 @@ class TabOneScreenOneContainer extends PureComponent {
 // define the header for this component
 TabOneScreenOneContainer.navigationOptions = ({ navigation }) => ({
   headerTitle: (
-    <View style={{ height: px2dp(90) }}>
+    <View style={{ height: 90 }}>
         <Header 
           headerText="党员之家"
           navigation={navigation}

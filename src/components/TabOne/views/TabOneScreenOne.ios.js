@@ -350,7 +350,7 @@ const styles = StyleSheet.create({
   },
   loadingMore: {
     marginTop: 10,
-    marginBottom: 250
+    marginBottom: px2dp(250)
   },
   loadingMoreText: {
     color: '#777',

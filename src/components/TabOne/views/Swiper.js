@@ -13,8 +13,9 @@ import {
   Platform,
   ActivityIndicator
 } from 'react-native'
+import px2dp from '../../../util/index';
 
-const { width, height } = Dimensions.get('window')
+const { width, height } = Dimensions.get('window');
 
 /**
  * Default styles
@@ -457,23 +458,23 @@ export default class extends Component {
     let dots = []
     const ActiveDot = this.props.activeDot || <View style={[{
       backgroundColor: this.props.activeDotColor || '#007aff',
-      width: 8,
-      height: 8,
-      borderRadius: 4,
-      marginLeft: 3,
-      marginRight: 3,
-      marginTop: 3,
-      marginBottom: 3
+      width: px2dp(8),
+      height: px2dp(8),
+      borderRadius: px2dp(4),
+      marginLeft: px2dp(3),
+      marginRight: px2dp(3),
+      marginTop: px2dp(1),
+      marginBottom: px2dp(3),
     }, this.props.activeDotStyle]} />
     const Dot = this.props.dot || <View style={[{
       backgroundColor: this.props.dotColor || 'rgba(0,0,0,.2)',
-      width: 8,
-      height: 8,
-      borderRadius: 4,
-      marginLeft: 3,
-      marginRight: 3,
-      marginTop: 3,
-      marginBottom: 3
+      width: px2dp(8),
+      height: px2dp(8),
+      borderRadius: px2dp(4),
+      marginLeft: px2dp(3),
+      marginRight: px2dp(3),
+      marginTop: px2dp(3),
+      marginBottom:px2dp(3)
     }, this.props.dotStyle ]} />
     for (let i = 0; i < this.state.total; i++) {
       dots.push(i === this.state.index

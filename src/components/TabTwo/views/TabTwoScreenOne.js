@@ -98,18 +98,16 @@ class TabTwoScreenOne extends Component {
 }
 
 const styles = StyleSheet.create({
-  headerTitle: {
-    top: -10,
-  },
   container: {
     flex: 1,
     backgroundColor: '#FFF',
+    marginTop: px2dp(20),
   },
 
   hintBox: {
     width,
     alignItems: 'center',
-    marginTop: 52,
+    marginTop: px2dp(62),
   },
   commonText: {
     fontSize: 20,

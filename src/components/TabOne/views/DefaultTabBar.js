@@ -9,6 +9,7 @@ const {
   Platform,
   TouchableOpacity,
 } = ReactNative;
+import px2dp from '../../../util/';
 
 const Button = require('./Button');
 import LinearGradient from 'react-native-linear-gradient';
@@ -70,7 +71,7 @@ const DefaultTabBar = React.createClass({
         width: 75,
         height: 4,
         bottom: 0,
-        marginLeft: 54,
+        marginLeft: px2dp(60),
       };
     } else {
       tabUnderlineStyle = {

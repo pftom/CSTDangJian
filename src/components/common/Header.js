@@ -63,10 +63,10 @@ const styles = StyleSheet.create({
     fontFamily: 'PingFangSC-Regular',
     fontSize: 24,
     color: '#FFF',
-    width: 96,
+    width: px2dp(96),
     ...Platform.select({
       ios: {
-        left: px2dp(140),
+        left: px2dp(145),
         top: 39,
       },
       android: {

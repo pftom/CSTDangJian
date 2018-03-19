@@ -204,7 +204,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFF',
     alignItems: 'center',
-    paddingTop: px2dp(10),
+    paddingTop: px2dp(40),
   },
   innerContainer: {
     width: px2dp(305),
