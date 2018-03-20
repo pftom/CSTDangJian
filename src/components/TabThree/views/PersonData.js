@@ -54,7 +54,7 @@ const mapKeyToTitle = {
 // map sex
 const mapSex = {
   'M': '男',
-  'W': '女',
+  'F': '女',
 };
 
 
@@ -63,6 +63,7 @@ class PersonData extends Component {
   
   render() {
     const { profile } = this.props.navigation.state.params;
+    console.log('profile', profile);
 
     // declare what need rendered 
     let renderFirstList = [];

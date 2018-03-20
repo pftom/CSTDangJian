@@ -128,9 +128,9 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
   content: {
-    paddingRight: 10,
+    paddingRight: px2dp(10),
     height: 40,
-    width: 330,
+    width: px2dp(330),
     marginTop: 2,
     justifyContent: 'center',
   },
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     height: 40,
-    width: 314,
+    width: px2dp(314),
     justifyContent: 'flex-end',
   },
   text: {
@@ -160,9 +160,9 @@ const styles = StyleSheet.create({
     ...ifIphoneX({
       paddingRight: 45,
     }, {
-      paddingRight: px2dp(20),
+      paddingRight: px2dp(40),
     }),
-    width: 314,
+    width: px2dp(314),
     textAlign: 'right'
   },
   arrow: {
@@ -172,14 +172,14 @@ const styles = StyleSheet.create({
     ...ifIphoneX({
       left: px2dp(-45),
     }, {
-      left: px2dp(-20),
+      left: px2dp(-40),
     }),
   },
   arrow2: {
     ...ifIphoneX({
       left: px2dp(-85),
     }, {
-      left: px2dp(-65),
+      left: px2dp(-55),
     }),
     marginTop: 2.5
   }
