@@ -61,6 +61,7 @@ function* getEvents(action) {
         return;
       }
     }
+    
     // dispatch getEvents http request
     // { active: true } represent the request events is the attend events
     

@@ -44,7 +44,7 @@ const events = (state = initialEventsState, action) => {
 
     case GET_EVENTS_SUCCESS: {
       // if get events success, merge the res into the state tree
-      const { events, active, mode, headline } = action.payload;
+      let { events, active, mode, headline } = action.payload;
 
       console.log('mode', mode, active, events, headline);
 

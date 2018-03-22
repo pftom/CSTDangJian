@@ -62,8 +62,13 @@ class Carousel1 extends Component {
           headline.map((item, key) => (
             <TouchableWithoutFeedback key={key} onPress={() => this.props.navigation.navigate('TabOneScreenTwo', { title: '党建活动', data: { type: GET_SINGLE_EVENT, id: item.id }})}>  
               <View style={styles.slide}>
-                <Image source={{ uri: item.photo }} resizeMode={'stretch'} style={[ styles.img, { opacity: this.props.imgOpacity}]}>
-                </Image>
+                {
+                  item.photo ? (
+                    <Image source={{ uri: item.photo }} resizeMode={'stretch'} style={[ styles.img, { opacity: this.props.imgOpacity}]} />
+                  ) : (
+                    <Image source={require('../../img/defaultBg.png')} resizeMode={'contain'} style={[ styles.img, { opacity: this.props.imgOpacity}]} />
+                  )
+                }
                 <LinearGradient
                   colors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 1)']} 
                   style={styles.linearGradient}

@@ -7,6 +7,8 @@ import {
   StyleSheet, 
   Dimensions,
   RefreshControl,
+  WebView,
+  WebViewHtmlSource,
 } from 'react-native';
 import { connect } from 'react-redux';
 import HTMLView from 'react-native-htmlview';
@@ -26,36 +28,41 @@ class TabOneScreenTwo extends PureComponent {
   render() {
     // get the data from the parent component
     const { data } = this.props;
-    console.log('data', data);
+    
+    // add fake data
+    const htmlContent = `
+        <p><a href="http://jsdf.co">&hearts; nice job!</a></p>
+        <p>hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</p>
+    `;
     
     return (
       <View style={styles.containerBox}>
           <ScrollView
             showsVerticalScrollIndicator={false}
            >
-          {
-            data && (
-              <View style={styles.container}>
-                <View style={styles.header}>
-                  <Image source={{ uri: data.photo }} style={styles.pic} />
-                  <Text style={[ styles.title, data.title && styles.head]}>{data.title}</Text>
-                  <Text style={styles.time}>{data.created}</Text>
-                </View>
-                <View style={styles.content}>
-                  <HTMLView
-                    stylesheet={htmlStyles}
-                    value={data.body}
-                  >
-                  </HTMLView>
-                </View>
-              </View>
-            )
-          }
+          <WebView
+            source={{ uri: 'https://github.com/facebook/react-native' }}
+            style={{ marginTop: 40 }}
+          />
         </ScrollView>
       </View>
     )
   }
 }
+
+// {
+//   data && (
+//     <View style={styles.container}>
+//       <View style={styles.content}>
+//         <HTMLView
+//           stylesheet={htmlStyles}
+//           value={htmlContent}
+//         >
+//         </HTMLView>
+//       </View>
+//     </View>
+//   )
+// }
 
 // { uri: base + data.image }
 

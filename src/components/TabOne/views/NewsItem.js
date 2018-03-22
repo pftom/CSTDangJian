@@ -19,7 +19,13 @@ const NewsItem = (props) => {
   
   return (
     <View style={styles.container}>
-      <Image source={{ uri: props.photo }} style={styles.pic} />
+      {
+        props.photo ? (
+          <Image source={{ uri: props.photo }} style={styles.pic} />
+        ) : (
+          <Image source={require('../../img/defaultBg.png')} style={styles.pic} />
+        )
+      }
       <View style={styles.textBox}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.time}>{props.created}</Text>
