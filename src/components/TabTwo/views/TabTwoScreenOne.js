@@ -25,29 +25,30 @@ const seasons = [
       label: '单选题',
       value: '单选题',
     },
+    {
+      label: '多选题',
+      value: '多选题',
+    },
   ],
 ];
 
 class TabTwoScreenOne extends Component {
   state = {
-    kind: null,
+    kind: ['单选题'],
   };
 
   onChange = (kind) => {
-    console.log(kind);
-    this.setState({
-      kind,
-    });
+    this.setState({ kind });
   }
 
   onScrollChange = (kind) => {
-    console.log('kind', kind);
+    this.setState({ kind });
   }
 
   handlePress = () => {
     const { navigation, dispatch } = this.props;
     const { kind } = this.state;
-    navigation.navigate('AnswerPage', { kind: kind, title: '答题页面' });
+    navigation.navigate('AnswerPage', { kind: kind[0], title: '答题页面' });
     // clear this term answer success count
     dispatch({ type: CLEAR_EVERY_TERM_ANSWER_COUNT });
   }

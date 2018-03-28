@@ -18,6 +18,7 @@ import store, { persistor } from './src/store';
 
 import App from './src/App';
 
+// do some improve later;
 const Loading = () => (
   <View>
     <Text>加载数据中...</Text>

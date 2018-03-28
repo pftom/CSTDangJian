@@ -26,6 +26,7 @@ if (process.env.NODE_ENV !== 'production') {
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist: ['answer'],
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

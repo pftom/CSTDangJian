@@ -8,19 +8,13 @@ import { SET_TOKEN } from './constants';
 
 import { NavigationActions } from 'react-navigation';
 
+// initial store state
+import { persistor } from './store';
+
 class App extends Component {
 
-  async componentDidMount() {
-    const that = this;
-    const token = await AsyncStorage.getItem('token');
-
-    console.log('navigator', this.navigator);
-    if (!token) {
-      console.log('login');
-      this.navigator && this.navigator.dispatch(
-        NavigationActions.navigate({ routeName: 'Login' })
-      );
-    }
+  componentDidMount() {
+    
   }
 
   getRef = (nav) => {

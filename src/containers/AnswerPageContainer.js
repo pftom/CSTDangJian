@@ -20,12 +20,24 @@ class AnswerPageContainer extends PureComponent {
     const { 
       navigation,
       isCompleted,
-      nowQuestion,
       isThisTermCompleted,
       everyTermAnswerCount,
       everyFecthTotalCount,
       dispatch,
+      everyDayNowQuestionIndex,
+      singleOptionQuestions,
+      multiOptionQuestions,
     } = this.props;
+
+    const { kind } = navigation.state.params;
+    console.log('kind', kind);
+    const nowQuestion = (
+      kind === '单选题'
+      ? singleOptionQuestions[everyDayNowQuestionIndex]
+      : multiOptionQuestions[everyDayNowQuestionIndex]
+    );
+
+    console.log('question', nowQuestion);
     
     return (
       <AnswerPage
@@ -65,14 +77,17 @@ export default connect(
       everyDayTotalCount,
       everyFecthTotalCount,
       everyDayNowQuestionIndex,
-      questions,
+      singleOptionQuestions,
+      multiOptionQuestions,
       everyTermAnswerCount,
     } = state.answer;
     return {
-      nowQuestion: questions[everyDayNowQuestionIndex],
       isThisTermCompleted: everyDayNowQuestionIndex >= everyFecthTotalCount - 1,
       everyTermAnswerCount,
       everyFecthTotalCount,
+      singleOptionQuestions,
+      multiOptionQuestions,
+      everyDayNowQuestionIndex,
     };
   },
 )(AnswerPageContainer);
