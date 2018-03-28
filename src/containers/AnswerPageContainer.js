@@ -45,6 +45,7 @@ class AnswerPageContainer extends PureComponent {
         nowQuestion={nowQuestion}
         isThisTermCompleted={isThisTermCompleted}
         dispatch={dispatch}
+        kind={kind}
         everyTermAnswerCount={everyTermAnswerCount}
         everyFecthTotalCount={everyFecthTotalCount}
       />

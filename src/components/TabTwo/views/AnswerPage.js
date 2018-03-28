@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, ScrollView, RefreshControl ,ListView, Picker, Image, TouchableWithoutFeedback, Dimensions } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { RadioButtons } from 'react-native-radio-buttons';
-import CheckBox from 'react-native-checkbox';
+import CheckBox from './CheckBox';
 import { ifIphoneX } from 'react-native-iphone-x-helper';
 
 // the compatability for all device about px
@@ -124,6 +124,7 @@ export default class extends Component {
     const {
       nowQuestion,
       isThisTermCompleted,
+      kind,
     } = this.props;
 
     const { options, answer, question } = nowQuestion;
@@ -132,7 +133,8 @@ export default class extends Component {
     
 
     const btn = (
-      <View style={
+      <View 
+        style={
           [styles.selectNextBox, !selectedOption && styles.disabledBox ]
         }
       >
@@ -151,7 +153,6 @@ export default class extends Component {
         </Text>
       </View>
     );
-    console.log('state', nowStatus);
 
     return (
       <View style={styles.container}>
@@ -161,13 +162,21 @@ export default class extends Component {
           <View style={styles.innerContainer}>
             <Text style={styles.questionTitle}>{question}</Text>
             <View style={styles.selectBox}>
-              <RadioButtons
-                options={ options }
-                onSelection={ this.setSelectedOption }
-                selectedOption={selectedOption }
-                renderOption={ this.renderOption }
-                renderContainer={ this.renderContainer }
-              />
+              {
+                kind === '单选题'
+                ? (
+                  <RadioButtons
+                    options={ options }
+                    onSelection={ this.setSelectedOption }
+                    selectedOption={selectedOption }
+                    renderOption={ this.renderOption }
+                    renderContainer={ this.renderContainer }
+                  />
+                )
+                : (
+                  null
+                )
+              }
             </View>
 
             <View style={styles.resultBox}>
@@ -288,7 +297,7 @@ const styles = StyleSheet.create({
     marginBottom: px2dp(20),
   },
   selectItem: {
-    width: px2dp(303),
+    width: px2dp(300),
     borderRadius: 7,
     backgroundColor: '#FFF',
     justifyContent: 'center',
