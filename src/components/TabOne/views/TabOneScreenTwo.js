@@ -1,147 +1,29 @@
 import React, { PureComponent } from 'react';
 import { 
-  Text, 
-  View, 
-  Image, 
-  ScrollView, 
-  StyleSheet, 
-  Dimensions,
-  RefreshControl,
   WebView,
-  WebViewHtmlSource,
 } from 'react-native';
-import { connect } from 'react-redux';
-import HTMLView from 'react-native-htmlview';
 import { ifIphoneX } from 'react-native-iphone-x-helper';
 
-import Header from '../../common/Header';
 import px2dp from '../../../util/index';
-
-const { width, height } = Dimensions.get('window');
-
-import { handleTime } from '../../../util/index';
-
-// import base url for present photo
-import { base } from '../../../util/';
 
 class TabOneScreenTwo extends PureComponent {
   render() {
     // get the data from the parent component
     const { data } = this.props;
-    
-    // add fake data
-    const htmlContent = `
-        <p><a href="http://jsdf.co">&hearts; nice job!</a></p>
-        <p>hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</p>
-    `;
+
+    const uri = 'https://mp.weixin.qq.com/s?__biz=MzIyODEwNDk5NQ==&mid=2649605841&idx=1&sn=384cbef5554fd2ffb2a9567ed7b5c696&chksm=f04e689dc739e18b637af6f0748e5cbcde45e1f6851eddd3b033669351b45f5dc8badcb752c1&mpshare=1&scene=23&srcid=0322AGA146wopCmRBRGUOv7Q#rd';
     
     return (
-      <View style={styles.containerBox}>
-          <ScrollView
-            showsVerticalScrollIndicator={false}
-           >
-          <WebView
-            source={{ uri: 'https://github.com/facebook/react-native' }}
-            style={{ marginTop: 40 }}
-          />
-        </ScrollView>
-      </View>
+      <WebView
+        source={{ uri }}
+        style={{ ...ifIphoneX({
+          marginTop: px2dp(43),
+        }, {
+          marginTop: px2dp(24)
+        }) }}
+      />
     )
   }
 }
-
-// {
-//   data && (
-//     <View style={styles.container}>
-//       <View style={styles.content}>
-//         <HTMLView
-//           stylesheet={htmlStyles}
-//           value={htmlContent}
-//         >
-//         </HTMLView>
-//       </View>
-//     </View>
-//   )
-// }
-
-// { uri: base + data.image }
-
-const styles = StyleSheet.create({
-  container: {
-    top: 28,
-    alignItems: 'center',
-  },
-  containerBox: {
-    width: width,
-    height: height - px2dp(50),
-    ...ifIphoneX({
-      paddingTop: px2dp(30),
-    }, {
-      paddingTop: px2dp(20),
-    }),
-  },
-  pic: {
-    width: px2dp(296),
-    height: px2dp(166),
-    borderRadius: 5,
-  },
-  head: {
-    fontSize: px2dp(20),
-  },
-  picBox: {
-    marginLeft: px2dp(60)
-  },
-  header: {
-    paddingBottom: px2dp(12),
-    borderBottomWidth: 0.5,
-    borderBottomColor: '#C1C1C1',
-    marginBottom: px2dp(17),
-  },
-  title: {
-    fontFamily: 'PingFangSC-Semibold',
-    fontSize: px2dp(20),
-    color: '#000000',
-    width: px2dp(283),
-    alignItems: 'center',
-    marginTop: px2dp(21),
-  },
-  time: {
-    fontFamily: 'PingFangSC-Light',
-    fontSize: px2dp(14),
-    color: 'rgba(152,152,152,0.80)',
-    marginTop: px2dp(8),
-  },
-  content: {
-    width: px2dp(306),
-    marginBottom: px2dp(50),
-  },
-  contentText: {
-    fontFamily: 'PingFangSC-Light',
-    fontSize: px2dp(18),
-    color: '#000000',
-  },
-});
-
-
-const htmlStyles = StyleSheet.create({
-  strong: {
-    fontFamily: 'PingFangSC-Light',
-    fontSize: px2dp(18),
-    color: '#000000',
-  },
-  p: {
-    fontFamily: 'PingFangSC-Light',
-    fontSize: px2dp(17),
-    lineHeight: px2dp(28),
-    color: '#000000',
-    marginTop: 0,
-    marginBottom: 0,
-    paddingBottom: 0,
-  },
-  text: {
-    fontSize: px2dp(16),
-    fontFamily: 'PingFangSC-Light',
-  }
-});
 
 export default TabOneScreenTwo;

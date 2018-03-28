@@ -1,5 +1,3 @@
-import { REHYDRATE } from 'redux-persist/constants';
-
 import { 
   LOGIN,
   LOGIN_SUCCESS,
@@ -15,14 +13,12 @@ export const initialAuthState = {
   isLogin: false,
   loginSuccess: false,
   loginError: false,
-  token: 'ce2fa48c680caf20224d463fd41bd53d603c1a91',
+  token: '330ec7bd991923465c803508b0469739902b639b',
   username: '140150115',
 }
 
 function auth(state = initialAuthState, action) {
   switch (action.type) {
-    case REHYDRATE: 
-      return { ...state, authenticated: true };
     case LOGIN: {
       return { 
         ...state, 

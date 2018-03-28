@@ -12,14 +12,23 @@ import {
   View
 } from 'react-native';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
-import store from './src/store';
+import store, { persistor } from './src/store';
 
 import App from './src/App';
 
+const Loading = () => (
+  <View>
+    <Text>加载数据中...</Text>
+  </View>
+);
+
 const DangJianApp = () => (
   <Provider store={store}>
-    <App />
+    <PersistGate loading={<Loading />} persistor={persistor}>
+      <App />
+    </PersistGate>
   </Provider>
 )
 

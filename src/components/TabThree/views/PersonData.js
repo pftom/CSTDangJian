@@ -45,11 +45,14 @@ const constructData = (data) => {
 
 // map all need render data from keys to content
 const mapKeyToTitle = {
-  'full_name': '姓名',
-  'sex': '性别',
-  'identity': '身份',
-  'college': '学院',
-  'major': '专业',
+  full_name: '姓名',
+  sex: '性别',
+  identity: '身份',
+  college: '学院',
+  major: '专业',
+  organization: '支部名称',
+  application_date: '递交入党申请时间',
+  join_date: '入党时间',
 };
 // map sex
 const mapSex = {
@@ -107,7 +110,16 @@ class PersonData extends Component {
         <List style={styles.secondList}>
           {
             renderSecondList.map((item, key) => (
-              <Item extra={item.extra} key={key}>{item.content}</Item>
+              <Item 
+                extra={
+                  item.extra 
+                  ? item.extra
+                  : '暂无'
+                } 
+                key={key}
+              >
+                {item.content}
+              </Item>
             ))
           }
         </List>

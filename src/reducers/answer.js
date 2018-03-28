@@ -1,5 +1,3 @@
-import { REHYDRATE } from 'redux-persist/constants';
-
 import { 
   ANSWER_QUESTION,
   ANSWER_QUESTION_SUCCESS,
