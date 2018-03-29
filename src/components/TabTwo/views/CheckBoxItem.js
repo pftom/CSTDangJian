@@ -6,7 +6,10 @@ import {
   TouchableOpacity,
   Alert,
   StyleSheet,
-} from 'react-native'
+} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+
+import px2dp from '../../../util/';
 
 const ios_blue = '#007AFF';
 
@@ -60,6 +63,9 @@ export default class SelectMultipleButton extends Component {
     singleTap: (valueTap) => { },
   }
 
+  selectedColor = ['#FF0467', '#FC7437'];
+  unSelectedColor = ['#DFD9D9', '#DFD9D9'];
+
   constructor(props) {
     super(props)
     this.state = {
@@ -94,48 +100,51 @@ export default class SelectMultipleButton extends Component {
               this.props.singleTap(this.props.value)
             }
           }
-
-        }
+          }
         }>
-        <View
-          style={
-            [
-              styles.button,
-              this.props.buttonViewStyle,
-              {
-                borderColor: this.state.selected ? this.props.highLightStyle.borderTintColor : this.props.highLightStyle.borderColor,
-                backgroundColor: this.state.selected ? this.props.highLightStyle.backgroundTintColor : this.props.highLightStyle.backgroundColor,
-              }
-            ]
-          }>
-          <Text style={
-            [
-              styles.text,
-              this.props.textStyle,
-              { color: this.state.selected ? this.props.highLightStyle.textTintColor : this.props.highLightStyle.textColor }
-            ]
-          }>
-            {this.props.displayValue === undefined ? this.props.value : this.props.displayValue}
-          </Text>
-        </View>
+        <LinearGradient
+          start={{x: 0.0, y: 0.0}} end={{x: 1.0, y: 1.0}}
+          colors={
+            this.state.selected 
+            ? this.selectedColor
+            : this.unSelectedColor
+          }
+          style={[styles.linearGradient, styles.addMarginBottom]}>
+            <View style={styles.selectItem}>
+              <Text style={styles.selectItemText}>{this.props.displayValue === undefined ? this.props.value : this.props.displayValue}</Text>
+            </View>
+        </LinearGradient>
       </TouchableOpacity >
     )
   }
 }
 
 const styles = StyleSheet.create({
-  button: {
-    margin: 5,
-    borderRadius: 3,
+  selectItemText: {
+    fontFamily: 'PingFangSC-Light',
+    fontSize: px2dp(20),
+    marginLeft: px2dp(10),
+    color: '#655757',
+  },
+  selectItem: {
+    width: px2dp(300),
+    borderRadius: px2dp(7),
+    backgroundColor: '#FFF',
+    justifyContent: 'center',
+    paddingLeft: px2dp(12),
+    paddingRight: px2dp(12),
+    paddingTop: px2dp(8),
+    paddingBottom: px2dp(8),
+  },
+  linearGradient: {
+    width: px2dp(302),
+    borderRadius: px2dp(8),
+    paddingBottom: px2dp(1),
+    paddingTop: px2dp(1),
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 1
   },
-  text: {
-    textAlign: 'center',
-    marginTop: 5,
-    marginBottom: 5,
-    marginLeft: 10,
-    marginRight: 10,
-  }
+  addMarginBottom: {
+    marginBottom: px2dp(20),
+  },
 })

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image, StyleSheet, View, Text, Dimensions } from 'react-native';
+
 import { handleTime } from '../../../util/index';
 
 // import base url for present images

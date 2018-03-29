@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "antd-mobile": "^2.0.3",
-    "lodash": "4.17.4",
+    "lodash": "^4.17.4",
     "mkp-react-native-picker": "1.0.7",
     "prop-types": "^15.6.1",
     "query-string": "4.3.4",
@@ -37,7 +37,8 @@
     "redux-form": "6.7.0",
     "redux-persist": "^5.9.1",
     "redux-saga": "^0.16.0",
-    "redux-thunk": "2.2.0"
+    "redux-thunk": "2.2.0",
+    "styled-components": "^3.2.3"
   },
   "devDependencies": {
     "babel-jest": "22.4.1",

@@ -27,6 +27,10 @@ const mapNumberToCharacter = [
   'E',
   'F',
   'G',
+  'H',
+  'I',
+  'J',
+  'K',
 ];
 const mapStatusToImage = {
   'success': require('../img/answerSuccess@3x.png'),
@@ -38,6 +42,7 @@ export default class extends Component {
   state = {
     selectedOption: '',
     nowStatus: 'start',
+    selectedOptions: [],
   };
 
   selectedColor = ['#FF0467', '#FC7437'];
@@ -98,16 +103,14 @@ export default class extends Component {
         everyFecthTotalCount,
       });
     }
-    this.setState({ selectedOption: '', nowStatus: 'start' });
+    this.setState({ selectedOption: '', selectedOptions: [], nowStatus: 'start' });
   }
 
-  handleGetResult = () => {
-    const {
-      nowQuestion,
-      dispatch,
-    } = this.props;
-    const { options, answer } = nowQuestion;
-    const { selectedOption } = this.state;
+  handleSelect = (selectedOptions) => {
+    this.setState({ selectedOptions });
+  }
+
+  handleSingleOptionRes = (dispatch, answer, options, selectedOption) => {
     const index = options.findIndex((value, index, arr) => {
       return selectedOption === value;
     });
@@ -120,6 +123,42 @@ export default class extends Component {
     }
   }
 
+  handleMultiOptionRes = (dispatch, answer, options, selectedOptions) => {
+    // judge whether the result is true
+    if (answer.length === selectedOptions.length) {
+      let judgeAllOptionsIncludes = true;
+      selectedOptions.map(option => {
+        if (!answer.includes(option)) {
+          judgeAllOptionsIncludes = false;
+        }
+      });
+
+      if (!judgeAllOptionsIncludes) {
+        this.setState({ nowStatus: 'error' });
+      } else {
+        dispatch({ type: ANSWER_QUESTION_SUCCESS });
+        this.setState({ nowStatus: 'success' });
+      }
+    } else {
+      this.setState({ nowStatus: 'error' });
+    }
+  }
+
+  handleGetResult = () => {
+    const {
+      nowQuestion,
+      dispatch,
+    } = this.props;
+    const { options, answer } = nowQuestion;
+    const { selectedOption, selectedOptions } = this.state;
+
+    if (answer.length > 1) {
+      this.handleMultiOptionRes(dispatch, answer, options, selectedOptions);
+    } else {
+      this.handleSingleOptionRes(dispatch, answer, options, selectedOption);
+    }
+  }
+
   render() {
     const {
       nowQuestion,
@@ -129,13 +168,20 @@ export default class extends Component {
 
     const { options, answer, question } = nowQuestion;
     const { params } = this.props.navigation.state;
-    const { nowStatus, selectedOption } = this.state;
-    
+    const { nowStatus, selectedOption, selectedOptions } = this.state;
+
+    console.log('selectedOptions', selectedOptions);
+
+    // judge whether need highlight   
+    let doNotHighlight = true;
+    if (selectedOptions.length > 1 || selectedOption)  {
+      doNotHighlight = false;
+    }
 
     const btn = (
       <View 
         style={
-          [styles.selectNextBox, !selectedOption && styles.disabledBox ]
+          [styles.selectNextBox, doNotHighlight && styles.disabledBox ]
         }
       >
         {
@@ -143,7 +189,7 @@ export default class extends Component {
           && <Image source={mapStatusToImage[nowStatus]} style={styles.selectedImg}></Image>
         }
         <Text style={
-          [styles.selectNextText, !selectedOption && styles.disabledText]
+          [styles.selectNextText, doNotHighlight && styles.disabledText]
         }>
         {
           nowStatus !== 'start'
@@ -174,7 +220,10 @@ export default class extends Component {
                   />
                 )
                 : (
-                  null
+                  <CheckBox
+                    options={options}
+                    handleSelect={this.handleSelect}
+                  />
                 )
               }
             </View>
@@ -187,7 +236,7 @@ export default class extends Component {
                 }
               </View>
               {
-                selectedOption
+                selectedOption || selectedOptions.length > 1
                 ? (
                   <TouchableOpacity 
                     onPress={
@@ -266,8 +315,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   linearGradient: {
-    width: px2dp(305),
-    borderRadius: 8,
+    width: px2dp(302),
+    borderRadius: px2dp(8),
     paddingBottom: px2dp(1),
     paddingTop: px2dp(1),
     alignItems: 'center',
@@ -298,7 +347,7 @@ const styles = StyleSheet.create({
   },
   selectItem: {
     width: px2dp(300),
-    borderRadius: 7,
+    borderRadius: px2dp(7),
     backgroundColor: '#FFF',
     justifyContent: 'center',
     paddingLeft: px2dp(12),
