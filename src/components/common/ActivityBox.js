@@ -115,6 +115,11 @@ class ActivityItem extends Component {
 
     const { rowData } = this.props;
 
+    let haveImage = false;
+    if (rowData && rowData.photo) {
+      haveImage = true;
+    }
+
     const renderStatus = (
       <LinearGradient
         start={{x: 0.0, y: 0.0}} end={{x: 1.0, y: 1.0}}
@@ -151,7 +156,13 @@ class ActivityItem extends Component {
               <Text style={styles.signText}>签到中...</Text>
             </View>
           </Modal>
-          <Image source={{ uri: rowData.photo }} style={styles.pic} />
+          {
+            haveImage ? (
+              <Image source={{ uri: rowData.photo }} style={styles.pic} />
+            ) : (
+              <View style={styles.pic} ></View>
+            )
+          }
           <LinearGradient
             colors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.6)']}
             style={styles.picBox}

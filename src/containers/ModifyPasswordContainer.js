@@ -17,7 +17,9 @@ class ModifyPasswordContainer extends PureComponent {
 
   render() {
     return (
-      <ModifyPassword {...this.props} />
+      <ModifyPassword 
+        {...this.props} 
+      />
     );
   }
 }

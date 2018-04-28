@@ -46,7 +46,10 @@ import {
   loadingToast,
 } from '../../common/Toast';
 
-import { UPDATE_PROFILE } from '../../../constants/';
+import { 
+  UPDATE_PROFILE,
+  INITIAL_UPDATE_PROFILE_STATE,
+} from '../../../constants/';
 
 const SCREEN = [ "MessageBox", "ActivityBox", "PersonData", "Setting" ];
 
@@ -63,6 +66,7 @@ class TabThreeScreenOne extends Component {
       updateProfileError,
     } = nextProps;
 
+    const { dispatch } = this.props;
     const that = this;
 
     if (isUpdateProfile) {
@@ -71,13 +75,22 @@ class TabThreeScreenOne extends Component {
 
     if (updateProfileSuccess) {
       Toast.hide();
-      successToast('更新头像成功!', 2);
-      
+      successToast(
+        '更新头像成功!', 
+        2, 
+        INITIAL_UPDATE_PROFILE_STATE,
+        dispatch,
+      );
     }
 
     if (updateProfileError) {
       Toast.hide();
-      failToast('更新头像失败，请检查网络连接！', 2);
+      failToast(
+        '更新头像失败，请检查网络连接！', 
+        2,
+        INITIAL_UPDATE_PROFILE_STATE,
+        dispatch,
+      );
     }
   }
 

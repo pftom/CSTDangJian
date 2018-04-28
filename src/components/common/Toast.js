@@ -11,13 +11,17 @@ function showToastNoMask(msg, time) {
 
 function successToast(msg, time, action, dispatch) {
   Toast.success(msg, time, () => {
-    dispatch({ type: action });
+    if (action && dispatch) {
+      dispatch({ type: action });
+    }
   });
 }
 
 function failToast(msg, time, action, dispatch) {
   Toast.fail(msg, time, () => {
-    dispatch({ type: action });
+    if (action && dispatch) {
+      dispatch({ type: action });
+    }
   });
 }
 
@@ -25,9 +29,8 @@ function offline(msg, time) {
   Toast.offline(msg, time);
 }
 
-function loadingToast(msg, time, action, dispatch) {
+function loadingToast(msg, time, action) {
   Toast.loading(msg, time, () => {
-    dispatch({ type: action });
     console.log('Load complete !!!');
   });
 }

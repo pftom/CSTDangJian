@@ -14,6 +14,8 @@ import {
   UPDATE_PROFILE,
   UPDATE_PROFILE_SUCCESS,
   UPDATE_PROFILE_ERROR,
+
+  INITIAL_UPDATE_PROFILE_STATE,
 } from '../constants/';
 
 const mapKeyToTitle = {
@@ -104,6 +106,15 @@ function profile(state = initialProfileState, action) {
         isUpdateProfile: false,
         updateProfileError: true,
       };
+    }
+
+    case INITIAL_UPDATE_PROFILE_STATE: {
+      return {
+        ...state,
+        isUpdateProfile: false,
+        updateProfileSuccess: false,
+        updateProfileError: false,
+      }
     }
 
     default:

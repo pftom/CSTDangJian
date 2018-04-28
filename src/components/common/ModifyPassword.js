@@ -13,7 +13,11 @@ const alert = Modal.alert;
 
 import Header from './Header';
 import px2dp from '../../util/';
-import { CHANGE_PASSWORD } from '../../constants/';
+import { 
+  CHANGE_PASSWORD,
+  CHANGE_PASSWORD_SUCCESS,
+  CHANGE_PASSWORD_ERROR,
+} from '../../constants/';
 
 // import toast function
 import { 
@@ -59,16 +63,17 @@ export default class ModifyContent extends Component {
       changePasswordSuccess,
       changePasswordError,
     } = nextProps;
+    const { dispatch } = this.props;
 
     const that = this;
 
     if (isChangingPassword) {
-      loadingToast('修改密码中...', 3);
+      loadingToast('修改密码中...', 3, dispatch);
     }
 
     if (changePasswordSuccess) {
       Toast.hide();
-      successToast('修改密码成功!', 2);
+      successToast('修改密码成功!', 2, CHANGE_PASSWORD_SUCCESS, dispatch);
       
       that.setState({ 
         oldPasswd: '',
@@ -79,7 +84,7 @@ export default class ModifyContent extends Component {
 
     if (changePasswordError) {
       Toast.hide();
-      failToast('修改密码失败，请检查旧密码是否正确或网络连接!', 2);
+      failToast('修改密码失败，请检查旧密码是否正确或网络连接!', 2, CHANGE_PASSWORD_ERROR, dispatch);
     }
   }
 
@@ -89,6 +94,7 @@ export default class ModifyContent extends Component {
   }
 
   handleConfirm = () => {
+    const { dispatch } = this.props;
     const { oldPasswd, newPasswd, newPasswd2 } = this.state;
     if (!oldPasswd || !newPasswd || !newPasswd2) {
       failToast('输入的密码不能为空哟~', 2);

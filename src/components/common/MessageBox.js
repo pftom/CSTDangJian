@@ -24,6 +24,12 @@ const MESSAGE = [
     title: '新学期加油',
     time: '2017-02-28',
     content: '党校课程如期展开，在这里祝愿所有参与学员能够在这一学期的党课中认真学习，不断提高思想觉悟！',
+  },
+  {
+    id: 4,
+    title: '新学期加油',
+    time: '2017-02-28',
+    content: '党校课程如期展开，在这里祝愿所有参与学员能够在这一学期的党课中认真学习，不断提高思想觉悟！',
   }
 ];
 
@@ -48,7 +54,10 @@ const MessageBox = ({ navigation }) => {
                 showsVerticalScrollIndicator={false}>
       <View style={styles.outerBox}>
         {
-          MESSAGE.map(item => <MessageItem                                                          navigation={navigation}                                            {...item} key={item.id} />)
+          MESSAGE.map(item => (
+              <MessageItem navigation={navigation}  {...item} key={item.id} />
+            )
+          )
         }
       </View>
     </ScrollView>
