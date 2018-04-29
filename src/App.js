@@ -22,7 +22,12 @@ class App extends Component {
   }
 
   render() {
-    return <AppNavigation getRef={this.getRef} />
+    return ( 
+      <AppNavigation 
+        getRef={this.getRef}
+        
+      />
+    );
   }
 }
 
