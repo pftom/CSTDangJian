@@ -1,6 +1,6 @@
 import { } from 'antd-mobile/es/button/index.native';
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, ScrollView, RefreshControl ,ListView, Picker, Image, TouchableWithoutFeedback, Dimensions } from 'react-native';
+import { Text, View, StyleSheet, ScrollView, RefreshControl ,ListView, Picker, Image, TouchableWithoutFeedback, Dimensions, Platform } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { PickerView, Button } from 'antd-mobile';
 import { ifIphoneX } from 'react-native-iphone-x-helper';
@@ -108,6 +108,11 @@ const styles = StyleSheet.create({
     }, {
       marginTop: px2dp(20),
     }),
+    ...Platform.select({
+      android: {
+        marginTop: 0,
+      }
+    })
   },
 
   hintBox: {
