@@ -10,6 +10,8 @@ import DetailThree from '../components/TabTwo/views/DetailThree';
 import DetailFour from '../components/TabTwo/views/DetailFour';
 import AnswerPageContainer from './AnswerPageContainer';
 
+import px2dp from '../util/index';
+
 import {
   ResultPage,
 } from '../components/TabTwo/views/';

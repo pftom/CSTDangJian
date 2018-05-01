@@ -6,6 +6,7 @@ import {
   Dimensions,
   Image,
   Animated,
+  Platform,
   TouchableWithoutFeedback
 } from 'react-native';
 
@@ -56,6 +57,11 @@ class Carousel1 extends Component {
           }, {
             top: px2dp(-320),
           }),
+          ...Platform.select({
+            android: {
+              top: px2dp(-290),
+            }
+          })
         }}
         style={styles.container}>
         {
@@ -104,7 +110,14 @@ const styles = StyleSheet.create({
     paddingLeft: px2dp(30),
     paddingRight: px2dp(30),
     alignItems: 'center',
-    top: px2dp(118),
+    ...Platform.select({
+      ios: {
+        top: px2dp(118),
+      },
+      android: {
+        top: px2dp(100),
+      }
+    })
   },
   text: {
     backgroundColor: 'transparent',

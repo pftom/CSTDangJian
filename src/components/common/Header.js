@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.5,
       },
       android: {
-        marginTop: 20.5,
+        marginTop: px2dp(0),
       }
     })
   },

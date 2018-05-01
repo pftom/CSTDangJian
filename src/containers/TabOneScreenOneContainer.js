@@ -1,7 +1,7 @@
 // react component all need package
 import React, { PureComponent } from 'react';
 // import component from react-native
-import { View } from 'react-native';
+import { View, Platform } from 'react-native';
 // import react bind library connect
 import { connect } from 'react-redux';
 // import presentation component
@@ -57,7 +57,13 @@ class TabOneScreenOneContainer extends PureComponent {
 // define the header for this component
 TabOneScreenOneContainer.navigationOptions = ({ navigation }) => ({
   headerTitle: (
-    <View style={{ height: 90 }}>
+    <View style={{ 
+      ...Platform.select({
+        ios: {
+          height: 90
+        },
+      })
+     }}>
         <Header 
           headerText="党员之家"
           navigation={navigation}
