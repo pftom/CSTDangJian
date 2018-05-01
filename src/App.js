@@ -22,13 +22,25 @@ class App extends Component {
   }
 
   render() {
+    const { token } = this.props;
+    console.log('token', token);
+
+    if (token) {
+      return (
+        <AppNavigation 
+          getRef={this.getRef}
+        />
+      );
+    }
+
     return ( 
-      <AppNavigation 
-        getRef={this.getRef}
-        
-      />
+      <Login />
     );
   }
 }
 
-export default App;
+export default connect(state => {
+  return {
+    token: state.auth.token,
+  }
+})(App);

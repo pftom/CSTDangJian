@@ -20,7 +20,7 @@ import App from './src/App';
 
 // do some improve later;
 const Loading = () => (
-  <View>
+  <View style={styles.container}>
     <Text>加载数据中...</Text>
   </View>
 );
