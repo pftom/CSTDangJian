@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, AsyncStorage, Modal, Button , TextInput, Keyboard ,TouchableWithoutFeedback, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { Text, View, AsyncStorage, Modal, Button , TextInput, Keyboard ,TouchableWithoutFeedback, TouchableOpacity, Image, StyleSheet, Platform } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import LinearGradient from 'react-native-linear-gradient';
 import { connect } from 'react-redux';
@@ -153,8 +153,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   addBorder: {
-    borderWidth: 1,
-    borderColor: "#D3D3D3",
+    ...Platform.select({
+      ios: {
+        borderWidth: 1,
+        borderColor: "#D3D3D3",
+      }
+    }),
     marginTop: 14,
     textAlign: 'center',
   },
