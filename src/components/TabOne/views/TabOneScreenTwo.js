@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { 
   WebView,
+  Platform,
 } from 'react-native';
 import { ifIphoneX } from 'react-native-iphone-x-helper';
 
@@ -16,11 +17,18 @@ class TabOneScreenTwo extends PureComponent {
     return (
       <WebView
         source={{ uri }}
-        style={{ ...ifIphoneX({
-          marginTop: px2dp(43),
-        }, {
-          marginTop: px2dp(24)
-        }) }}
+        style={{ 
+          ...ifIphoneX({
+            marginTop: px2dp(43),
+          }, {
+            marginTop: px2dp(24)
+          }),
+          ...Platform.select({
+            android: {
+              marginTop: px2dp(0),
+            }
+          })
+        }}
       />
     )
   }

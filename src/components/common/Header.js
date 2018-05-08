@@ -98,9 +98,9 @@ const styles = StyleSheet.create({
         })
       },
       android: {
-        left: px2dp(width / 2 - 63),
+        left: px2dp(width / 2 - 105),
         fontSize: 24,
-        top: 34
+        top: px2dp(28)
       }
     }),
   },
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
       },
       android: {
         left: width - px2dp(145),
-        top: 24,
+        top: px2dp(15),
         alignItems: 'center',
       }
     }),
@@ -145,8 +145,8 @@ const styles = StyleSheet.create({
         top: 41,
       },
       android: {
-        marginLeft: 23,
-        marginTop: 41,
+        marginLeft: px2dp(23),
+        marginTop: px2dp(31),
       }
     })
   },

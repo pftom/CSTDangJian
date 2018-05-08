@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Image, View, StyleSheet, } from 'react-native';
+import { Text, Image, View, StyleSheet, Platform } from 'react-native';
 
 import px2dp from '../../../util/';
 
@@ -17,13 +17,20 @@ const SettingItem = (props) => (
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: px2dp(20),
+    marginTop: px2dp(17),
     width: px2dp(128),
     height: px2dp(128),
     shadowRadius: px2dp(40),
     shadowColor: '#C7C7C7',
     shadowOpacity: 0.32,
     marginRight: px2dp(32),
+    ...Platform.select({
+      android: {
+        borderWidth: 1,
+        borderColor: 'rgba(147, 147, 148, .1)',
+        borderRadius: px2dp(10),
+      }
+    })
   },
   upSide: {
     flexDirection: 'row',
